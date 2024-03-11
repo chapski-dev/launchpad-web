@@ -1,3 +1,3 @@
-import { Invoices } from '@/pages';
+import { Invoices } from '@/pages/invoices/Invoices';
 
 export default Invoices;
