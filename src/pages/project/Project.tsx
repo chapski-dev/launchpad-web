@@ -2,14 +2,14 @@
 
 import React, { FC, useState } from 'react';
 
-import { CustomersView } from './Customers.view';
+import { ProjectView } from './Project.view';
 
-interface ICustomersProps {}
+interface IProjectProps {}
 
-export const Customers:FC<ICustomersProps> = () => {
+export const Project:FC<IProjectProps> = () => {
   const [first, setFirst] = useState('');
   return (
-    <CustomersView
+    <ProjectView
       first={first}
       setFirst={setFirst}
     />

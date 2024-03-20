@@ -2,14 +2,14 @@
 
 import React, { FC, useState } from 'react';
 
-import { InvoicesView } from './Invoices.view';
+import { ReferralView } from './Referral.view';
 
-interface IInvoicesProps {}
+interface IReferralProps {}
 
-export const Invoices:FC<IInvoicesProps> = () => {
+export const Referral:FC<IReferralProps> = () => {
   const [first, setFirst] = useState('');
   return (
-    <InvoicesView
+    <ReferralView
       first={first}
       setFirst={setFirst}
     />

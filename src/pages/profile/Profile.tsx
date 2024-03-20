@@ -2,14 +2,14 @@
 
 import React, { FC, useState } from 'react';
 
-import { DashboardView } from './Dashboard.view';
+import { ProfileView } from './Profile.view';
 
-interface IDashboardProps {}
+interface IProfileProps {}
 
-export const Dashboard:FC<IDashboardProps> = () => {
+export const Profile:FC<IProfileProps> = () => {
   const [first, setFirst] = useState('');
   return (
-    <DashboardView
+    <ProfileView
       first={first}
       setFirst={setFirst}
     />
