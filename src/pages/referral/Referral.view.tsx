@@ -4,14 +4,14 @@ import { Container } from '@/ui/layout/Container/Container';
 
 import * as S from './style';
 
-interface ICustomersViewProps {
+interface IReferralViewProps {
   first: string;
   setFirst: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const CustomersView: FC<ICustomersViewProps> = ({ first, setFirst }) => (
+export const ReferralView: FC<IReferralViewProps> = ({ first, setFirst }) => (
   <Container>
-    <S.Text>Customers</S.Text>
+    <S.Text>Referral</S.Text>
     {/* Your screen code here */}
     <button
       onClick={() => setFirst((prevSt: string) => prevSt + 1)}

@@ -4,14 +4,14 @@ import { Container } from '@/ui/layout/Container/Container';
 
 import * as S from './style';
 
-interface IInvoicesViewProps {
+interface IPostViewProps {
   first: string;
   setFirst: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const InvoicesView: FC<IInvoicesViewProps> = ({ first, setFirst }) => (
+export const PostView: FC<IPostViewProps> = ({ first, setFirst }) => (
   <Container>
-    <S.Text>Invoices</S.Text>
+    <S.Text>Post</S.Text>
     {/* Your screen code here */}
     <button
       onClick={() => setFirst((prevSt: string) => prevSt + 1)}
