@@ -1,15 +1,16 @@
-'use client';
-
 import './globals.css';
 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Link from 'next/link';
+import { headers } from 'next/headers';
 import { ReactNode } from 'react';
+import { cookieToInitialState } from 'wagmi';
 
-import { Routes } from '@/router';
+import { wagmiConfig } from '@/config';
+import { TelegramProvider } from '@/providers/TelegramProvider';
+import { WalletsConnectProvider } from '@/providers/WalletsConnectProvider';
 
-import * as S from './style';
+import { Header } from './Header/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,42 +23,19 @@ export const RootLayout = ({
   children,
 }: Readonly<{
   children: ReactNode;
-}>) => (
-  <html lang="en">
-    <body className={inter.className}>
-      <S.Header>
-        <S.Nav>
-          {links.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
-            >
-              <p className="hidden md:block">{link.name}</p>
-            </Link>
-          ))}
-        </S.Nav>
-      </S.Header>
-      {children}
-    </body>
-  </html>
-);
+}>) => {
+  const initialState = cookieToInitialState(wagmiConfig, headers().get('cookie'));
 
-const links = [
-  {
-    href: Routes.home,
-    name: 'home',
-  },
-  {
-    href: Routes.dashboard,
-    name: 'dashboard',
-  },
-  {
-    href: Routes.customers,
-    name: 'customers',
-  },
-  {
-    href: Routes.invoices,
-    name: 'invoices',
-  },
-];
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <WalletsConnectProvider initialState={initialState}>
+          <TelegramProvider>
+            <Header />
+            {children}
+          </TelegramProvider>
+        </WalletsConnectProvider>
+      </body>
+    </html>
+  ); 
+};

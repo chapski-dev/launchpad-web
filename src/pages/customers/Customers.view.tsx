@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Container } from '@/ui';
+import { Container } from '@/ui/layout/Container/Container';
 
 import * as S from './style';
 
