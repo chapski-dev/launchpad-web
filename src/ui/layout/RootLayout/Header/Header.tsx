@@ -29,18 +29,26 @@ export const Header = () => (
 const links = [
   {
     href: Routes.home,
-    name: 'home',
+    name: 'Home',
   },
   {
-    href: Routes.dashboard,
-    name: 'dashboard',
+    href: Routes.post,
+    name: 'Post',
   },
   {
-    href: Routes.customers,
-    name: 'customers',
+    href: Routes.profile,
+    name: 'Profile',
   },
   {
-    href: Routes.invoices,
-    name: 'invoices',
+    href: Routes.project,
+    name: 'Project',
+  },
+  {
+    href: Routes.referral,
+    name: 'Referral',
+  },
+  {
+    href: Routes['vesting-distribution'],
+    name: 'Vesting Distribution',
   },
 ];

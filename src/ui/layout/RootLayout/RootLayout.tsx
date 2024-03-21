@@ -38,6 +38,7 @@ export const RootLayout = ({
             </TelegramProvider>
           </ReactQueryProvider>
         </WalletsConnectProvider>
+        <div id="portal"></div>
       </body>
     </html>
   );
