@@ -1,3 +1,3 @@
-import { VestingDistribution } from '@/pages/vesting-distribution/VestingDistribution';
+import VestingDistribution from '@/screens/vesting-distribution/VestingDistribution';
 
 export default VestingDistribution;

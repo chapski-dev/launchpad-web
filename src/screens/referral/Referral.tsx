@@ -2,16 +2,18 @@
 
 import React, { FC, useState } from 'react';
 
-import { ProfileView } from './Profile.view';
+import { ReferralView } from './Referral.view';
 
-interface IProfileProps {}
+interface IReferralProps {}
 
-export const Profile:FC<IProfileProps> = () => {
+const Referral:FC<IReferralProps> = () => {
   const [first, setFirst] = useState('');
   return (
-    <ProfileView
+    <ReferralView
       first={first}
       setFirst={setFirst}
     />
   );
 };
+
+export default Referral;

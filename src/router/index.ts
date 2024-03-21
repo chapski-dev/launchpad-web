@@ -1,6 +1,8 @@
 export const Routes = {
-  customers: '/dashboard/customers',
-  dashboard: '/dashboard',
   home: '/',
-  invoices: '/invoices',
+  post: 'post',
+  profile: '/profile',
+  project: '/project',
+  referral: '/referral',
+  'vesting-distribution': '/vesting-distribution',
 } as const;

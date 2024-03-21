@@ -2,16 +2,18 @@
 
 import React, { FC, useState } from 'react';
 
-import { ReferralView } from './Referral.view';
+import { ProjectView } from './Project.view';
 
-interface IReferralProps {}
+interface IProjectProps { }
 
-export const Referral:FC<IReferralProps> = () => {
+const Project: FC<IProjectProps> = () => {
   const [first, setFirst] = useState('');
   return (
-    <ReferralView
+    <ProjectView
       first={first}
       setFirst={setFirst}
     />
   );
 };
+
+export default Project;

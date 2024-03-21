@@ -6,6 +6,8 @@ import { HomeView } from './Home.view';
 
 interface IHomeProps {}
 
-export const Home:FC<IHomeProps> = () => (
+const Home:FC<IHomeProps> = () => (
   <HomeView />
 );
+
+export default Home;
