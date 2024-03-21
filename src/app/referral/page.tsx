@@ -1,3 +1,3 @@
-import { Referral } from '@/pages/referral/Referral';
+import Referral from '@/screens/referral/Referral';
 
 export default Referral;

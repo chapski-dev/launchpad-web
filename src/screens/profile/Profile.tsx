@@ -2,16 +2,18 @@
 
 import React, { FC, useState } from 'react';
 
-import { ProjectView } from './Project.view';
+import { ProfileView } from './Profile.view';
 
-interface IProjectProps {}
+interface IProfileProps { }
 
-export const Project:FC<IProjectProps> = () => {
+const Profile: FC<IProfileProps> = () => {
   const [first, setFirst] = useState('');
   return (
-    <ProjectView
+    <ProfileView
       first={first}
       setFirst={setFirst}
     />
   );
 };
+
+export default Profile;

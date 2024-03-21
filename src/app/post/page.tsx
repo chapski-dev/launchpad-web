@@ -1,3 +1,3 @@
-import { Post } from '@/pages/post/Post';
+import Post from '@/screens/post/Post';
 
 export default Post;

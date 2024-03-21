@@ -6,7 +6,7 @@ import { VestingDistributionView } from './VestingDistribution.view';
 
 interface IVestingDistributionProps {}
 
-export const VestingDistribution:FC<IVestingDistributionProps> = () => {
+const VestingDistribution:FC<IVestingDistributionProps> = () => {
   const [first, setFirst] = useState('');
   return (
     <VestingDistributionView
@@ -15,3 +15,5 @@ export const VestingDistribution:FC<IVestingDistributionProps> = () => {
     />
   );
 };
+
+export default VestingDistribution;
