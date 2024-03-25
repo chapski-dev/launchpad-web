@@ -1,8 +1,8 @@
-import { TonConnectButton } from '@tonconnect/ui-react';
-import { Link } from 'react-router-dom';
+import { TonConnectButton } from '@tonconnect/ui-react'
+import { Link } from 'react-router-dom'
 
-import { AppRoutes } from '@/router';
-import * as S from './style';
+import { AppRoutes } from '@/router'
+import * as S from './style'
 
 export const Header = () => (
   <S.Header>
@@ -16,11 +16,11 @@ export const Header = () => (
           <p className="hidden md:block">{link.name}</p>
         </Link>
       ))}
-      <w3m-button />
+
       <TonConnectButton />
     </S.Nav>
   </S.Header>
-);
+)
 
 const links = [
   {
@@ -47,4 +47,4 @@ const links = [
     href: AppRoutes['vesting-distribution'],
     name: 'Vesting Distribution',
   },
-];
+]

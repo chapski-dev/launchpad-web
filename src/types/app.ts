@@ -1,20 +1,21 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren } from 'react'
 
 declare module 'styled-components' {
   export interface DefaultTheme {
     color: {
-      bg: string;
-      bgSecondary: string;
-      text: string;
-      white: string;
-      hint: string;
-      link: string;
-      btn: string;
-      btnText: string;
-      redAlert: string;
-      greenSuccess: string;
-    };
+      bg: string
+      bgSecondary: string
+      text: string
+      hint: string
+      link: string
+      btn: string
+      btnText: string
+    }
+    gradient: {
+      g1: string
+      g2: string
+    }
   }
 }
 
-export type FCWithChildren<T = object> = FC<PropsWithChildren<T>>;
+export type FCWithChildren<T = object> = FC<PropsWithChildren<T>>

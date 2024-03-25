@@ -1,11 +1,12 @@
+import React, { FC } from 'react'
 
-import React, { FC } from 'react';
+import { useThemeContext } from '@/providers/ThemeProvider/ThemeProvider'
+import { HomeView } from './Home.view'
 
-import { HomeView } from './Home.view';
+interface IHomeProps {}
 
-interface IHomeProps { }
+export const Home: FC<IHomeProps> = () => {
+  const { updateCurrentTheme } = useThemeContext()
 
-export const Home: FC<IHomeProps> = () => (
-  <HomeView />
-);
-
+  return <HomeView updateTheme={updateCurrentTheme} />
+}

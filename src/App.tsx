@@ -1,11 +1,21 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import { ErrorPage, Home, Post, Profile, Project, Referral, VestingDistribution } from './pages';
-import ReactQueryProvider from './providers/ReactQueryProvider';
-import { TelegramProvider } from './providers/TelegramProvider';
-import { WalletsConnectProvider } from './providers/WalletsConnectProvider';
-import { AppRoutes } from './router';
-import { RootLayout } from './ui/layout/RootLayout';
+import { ThemeProvider } from '@/providers/ThemeProvider'
+import { GlobalStyle } from './assets/style/GlobalStyle'
+import {
+  ErrorPage,
+  Home,
+  Post,
+  Profile,
+  Project,
+  Referral,
+  VestingDistribution,
+} from './pages'
+import ReactQueryProvider from './providers/ReactQueryProvider'
+import { TelegramProvider } from './providers/TelegramProvider'
+import { WalletsConnectProvider } from './providers/WalletsConnectProvider'
+import { AppRoutes } from './router'
+import { RootLayout } from './ui/layout/RootLayout'
 
 const router = createBrowserRouter([
   {
@@ -39,18 +49,21 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     path: '/',
   },
-]);
+])
 
 function App() {
   return (
     <WalletsConnectProvider>
       <ReactQueryProvider>
+        <ThemeProvider>
           <TelegramProvider>
             <RouterProvider router={router} />
+            <GlobalStyle />
           </TelegramProvider>
+        </ThemeProvider>
       </ReactQueryProvider>
     </WalletsConnectProvider>
-  );
+  )
 }
 
-export default App;
+export default App
