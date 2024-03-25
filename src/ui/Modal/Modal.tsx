@@ -2,8 +2,8 @@ import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { FCWithChildren } from '@/types/app';
-
 import * as S from './style';
+
 
 type ModalProps = {
   className?: string;

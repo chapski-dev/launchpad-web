@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const LAUNCHPAD_BASE_API_URL = process.env.LAUNCHPAD_BASE_API_URL;
+const LAUNCHPAD_BASE_API_URL = process.env.REACT_APP_LAUNCHPAD_BASE_API_URL;
 
 const Axios = axios.create({
   baseURL: LAUNCHPAD_BASE_API_URL,

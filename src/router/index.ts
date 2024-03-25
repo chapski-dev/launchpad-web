@@ -1,8 +1,8 @@
-export const Routes = {
+export const AppRoutes = {
   home: '/',
   post: 'post',
-  profile: '/profile',
-  project: '/project',
-  referral: '/referral',
-  'vesting-distribution': '/vesting-distribution',
+  profile: 'profile',
+  project: 'project',
+  referral: 'referral',
+  'vesting-distribution': 'vesting-distribution',
 } as const;

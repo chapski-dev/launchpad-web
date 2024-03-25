@@ -1,11 +1,12 @@
-'use client';
-
-import Script from 'next/script';
 import { createContext, FC, PropsWithChildren, useContext, useEffect, useMemo, useState } from 'react';
 
+import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { WebApp } from '@/types/telegram';
-
 import { TelegramUser } from './types';
+import { includeWallets } from '../WalletsConnectProvider/wallets';
+
+
+const MANIFEST_URL = 'https://tokenova.fi/tonconnect-manifest.json';
 
 export type TelegramContextType = {
   webApp?: WebApp;
@@ -38,10 +39,18 @@ export const TelegramProvider: FC<PropsWithChildren> = (props) => {
     : {}, [webApp]);
 
   return (
+    <TonConnectUIProvider
+    manifestUrl={MANIFEST_URL}
+    uiPreferences={{
+      theme: 'SYSTEM',
+    }}
+    walletsListConfiguration={{ includeWallets: includeWallets }}
+  >
     <TelegramContext.Provider value={value}>
-      <Script src="/js/telegram-web-app.js" strategy="afterInteractive" />
+      <script src="/js/telegram-web-app.js" />
       {children}
     </TelegramContext.Provider>
+    </TonConnectUIProvider>
   );
 };
 

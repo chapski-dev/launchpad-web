@@ -1,7 +1,7 @@
-'use client';
+
+import { ReactNode, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { ReactNode, useState } from 'react';
 
 const ReactQueryProvider = ({ children }: { children: ReactNode }) => {
   const [queryClient] = useState(() => new QueryClient({
