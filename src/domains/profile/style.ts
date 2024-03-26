@@ -1,12 +1,7 @@
 import { styled } from 'styled-components'
 
-export const WrapperContainer = styled.div`
-  width: 450px;
-`
-
 export const Wrapper = styled.div`
   width: 100%;
-  position: relative;
 `
 
 export const CompletingInfoBlock = styled.div`
