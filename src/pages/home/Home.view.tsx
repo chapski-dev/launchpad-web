@@ -4,6 +4,8 @@ import { PostsList } from './components/PostsList/PostsList'
 import { ProjectList } from './components/Projectslist/ProjectsList'
 import { StoriesBlock } from './components/StoriesBlock/StoriesBlock'
 import * as S from './style'
+import { ProjectInfoHeader } from '../project/components/ProjectInfoHeader/ProjectInfoHeader'
+import { Tokenomics } from '../project/components/Tokenomics/Tokenomics'
 
 interface IHomeViewProps {
   updateTheme: (theme: CurrentThemeType) => void
@@ -21,6 +23,12 @@ export const HomeView: FC<IHomeViewProps> = (props) => {
       <StoriesBlock />
       <ProjectList search="" />
       <PostsList />
+      <ProjectInfoHeader
+        description="fasfas"
+        image="asfasf"
+        // network={project.network}
+        title="asfsaf"
+      />
     </main>
   )
 }
