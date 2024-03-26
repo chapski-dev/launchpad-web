@@ -25,6 +25,7 @@
     "@web3modal/react": "^2.7.1",
     "@web3modal/ui": "^4.1.1",
     "@web3modal/wagmi": "^4.1.1",
+    "@yankeeinlondon/gray-matter": "^6.2.1",
     "axios": "^1.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -34,7 +35,8 @@
     "typescript": "^4.4.2",
     "viem": "^2.8.18",
     "wagmi": "^2.5.12",
-    "web-vitals": "^2.1.0"
+    "web-vitals": "^2.1.0",
+    "@ton-and-company/sdk": "git+https://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@github.com/tokenova-fi/ton-contracts-sdk"
   },
   "eslintConfig": {
     "extends": [

@@ -1,14 +1,15 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const LAUNCHPAD_BASE_API_URL = process.env.REACT_APP_LAUNCHPAD_BASE_API_URL;
+const LAUNCHPAD_BASE_API_URL = process.env.REACT_APP_LAUNCHPAD_BASE_API_URL
 
 const Axios = axios.create({
   baseURL: LAUNCHPAD_BASE_API_URL,
-});
+})
 
 export const ApiRoutes = {
   LaunchpadProjects: '/launchpad/projects',
   UserProfile: '/user/profile',
-} as const;
+  GetBlogPosts: '/api/blog/getPosts',
+} as const
 
-export default Axios;
+export default Axios
