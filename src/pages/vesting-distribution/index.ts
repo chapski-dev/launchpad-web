@@ -1,3 +1,3 @@
-import { VestingDistribution } from './VestingDistribution';
+import VestingDistribution from './VestingDistribution'
 
-export { VestingDistribution };
+export { VestingDistribution }
