@@ -4,17 +4,6 @@ import { Task } from '@/ui/Task/Task'
 import * as S from './style'
 
 export const Profile: FC = () => {
-  // const [isConnectWalletPopupOpen, setIsConnectWalletPopupOpen] =
-  //   useState<boolean>(false)
-
-  // const toggleConnectWalletPopup = useCallback(() => {
-  //   setIsConnectWalletPopupOpen((prev) => !prev)
-  // }, [])
-
-  //   const router = useRouter()
-
-  //   const { user } = useTelegram()
-
   // const { xapiProfileInfo, setXapiProfileFlag } = useProfileContext()
 
   //   const loadBlockpassWidget = useCallback(() => {
@@ -34,19 +23,6 @@ export const Profile: FC = () => {
     <S.Wrapper>
       <S.WrapperContainer>
         <Container>
-          {/* <Button children="new" onClick={() => setXapiProfileFlag('new')} />
-            <Button
-              children="pending-kyc"
-              onClick={() => setXapiProfileFlag('pending-kyc')}
-            />
-            <Button
-              children="done"
-              onClick={() => setXapiProfileFlag('done')}
-            />
-            <Button
-              children="done2"
-              onClick={() => setXapiProfileFlag('done2')}
-            /> */}
           <S.CompletingInfoBlock>
             <S.InfoTitle>Completing the profile creation</S.InfoTitle>
             <S.DescriptionInfo>
