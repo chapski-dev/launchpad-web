@@ -53,16 +53,19 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <WalletsConnectProvider>
-      <ReactQueryProvider>
-        <ThemeProvider>
-          <TelegramProvider>
-            <RouterProvider router={router} />
-            <GlobalStyle />
-          </TelegramProvider>
-        </ThemeProvider>
-      </ReactQueryProvider>
-    </WalletsConnectProvider>
+    <>
+      <WalletsConnectProvider>
+        <ReactQueryProvider>
+          <ThemeProvider>
+            <TelegramProvider>
+              <RouterProvider router={router} />
+              <GlobalStyle />
+            </TelegramProvider>
+          </ThemeProvider>
+        </ReactQueryProvider>
+      </WalletsConnectProvider>
+      <script src="https://telegram.org/js/telegram-web-app.js" />
+    </>
   )
 }
 

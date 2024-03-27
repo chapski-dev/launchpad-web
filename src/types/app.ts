@@ -11,6 +11,7 @@ declare module 'styled-components' {
       btn: string
       btnText: string
       success: string
+      redAlert: string
     }
     gradient: {
       g1: string
