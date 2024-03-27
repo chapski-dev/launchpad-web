@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react'
-
 import { PostView } from './Post.view'
 
 interface IPostProps {}

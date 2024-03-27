@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import { GlobalStyle } from './assets/style/GlobalStyle'
+import { Layout } from './features/layout/Layout'
 import {
   ErrorPage,
   Home,
@@ -15,7 +16,6 @@ import ReactQueryProvider from './providers/ReactQueryProvider'
 import { TelegramProvider } from './providers/TelegramProvider'
 import { WalletsConnectProvider } from './providers/WalletsConnectProvider'
 import { AppRoutes } from './router'
-import { RootLayout } from './ui/layout/RootLayout'
 
 const router = createBrowserRouter([
   {
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         path: AppRoutes['vesting-distribution'],
       },
     ],
-    element: <RootLayout />,
+    element: <Layout />,
     errorElement: <ErrorPage />,
     path: '/',
   },

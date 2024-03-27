@@ -1,12 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC } from 'react'
 
-import { Container } from '@/ui';
-import * as S from './style';
-
+import { Container } from '@/ui'
+import * as S from './style'
 
 interface IProfileViewProps {
-  first: string;
-  setFirst: React.Dispatch<React.SetStateAction<string>>;
+  first: string
+  setFirst: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const ProfileView: FC<IProfileViewProps> = ({ first, setFirst }) => (
@@ -19,4 +18,4 @@ export const ProfileView: FC<IProfileViewProps> = ({ first, setFirst }) => (
     />
     <p>{first}</p>
   </Container>
-);
+)
