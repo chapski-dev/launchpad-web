@@ -1,4 +1,6 @@
+
 import { AXIOS_LAUNCHPAD_INSTANCE } from '@/utils/axios-instance/axios-instance'
+
 import axios, { ApiRoutes } from './config'
 import {
   GetICOJettonsRes,
@@ -25,8 +27,10 @@ export const getXapiProfile = (params: {
     })
     .then((res) => res.data)
 
+
 export const getPosts = async () => {
   const { data } = await AXIOS_LAUNCHPAD_INSTANCE.get(ApiRoutes.GetBlogPosts)
 
   return data
 }
+
