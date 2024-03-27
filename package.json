@@ -8,7 +8,8 @@
     "test": "craco test",
     "eject": "craco eject",
     "lint:fix": "eslint --fix --ext .ts,.tsx ./src",
-    "prepare": "husky"
+    "prepare": "husky",
+    "generate-svg": "npx @svgr/cli --out-dir src/ui/icons/ --ignore-existing -- src/assets/icons/  && eslint src/ui/icons/** --fix"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.28.6",
@@ -56,6 +57,7 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.1.0",
+    "@svgr/cli": "6.3.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1"
   }
