@@ -1,6 +1,6 @@
 
 import { FC, PropsWithChildren } from 'react';
-import { createWeb3Modal } from '@web3modal/wagmi';
+import { createWeb3Modal } from '@web3modal/wagmi/react';
 import { WagmiProvider } from 'wagmi';
 
 import { projectId, wagmiConfig } from '../../config';
