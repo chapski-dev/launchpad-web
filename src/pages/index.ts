@@ -5,6 +5,7 @@ import { Profile } from './Profile'
 import { Project } from './Project'
 import { Referral } from './Referral'
 import { VestingDistribution } from './Vesting-distribution'
+
 export {
   ErrorPage,
   Home,
