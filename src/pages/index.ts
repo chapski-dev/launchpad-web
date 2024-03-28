@@ -1,11 +1,10 @@
-import { ErrorPage } from './error-page';
-import { Home } from './home';
-import { Post } from './post';
-import { Profile } from './profile';
-import { Project } from './project';
-import { Referral } from './referral';
-import { VestingDistribution } from './vesting-distribution';
-
+import { ErrorPage } from './Error-page'
+import { Home } from './Home'
+import { Post } from './Post'
+import { Profile } from './Profile'
+import { Project } from './Project'
+import { Referral } from './Referral'
+import { VestingDistribution } from './Vesting-distribution'
 export {
   ErrorPage,
   Home,
@@ -13,4 +12,5 @@ export {
   Profile,
   Project,
   Referral,
-  VestingDistribution };
+  VestingDistribution,
+}
