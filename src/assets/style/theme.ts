@@ -9,7 +9,13 @@ export const lightTheme: DefaultTheme = {
     btn: `#2381CC`,
     btnText: `#FFFFFF`,
     bgSecondary: `#EFEFF3`,
+    success: '#62c56d',
     redAlert: '#f00',
+    success: '#62c56d',
+    white: '#fff',
+    black: '#000',
+    redAlert: 'rgb(255,0,0)',
+    pink: '#F03F9F',
   },
   gradient: {
     g1: 'linear-gradient(312deg, #82d3ff 0.46%, #ffa1ec 100%)',
@@ -26,6 +32,7 @@ export const darkTheme: DefaultTheme = {
     btn: `#2381CC`,
     btnText: `#FFFFFF`,
     bgSecondary: `#464646`,
+    success: '#62c56d',
     redAlert: '#f00',
   },
   gradient: {
