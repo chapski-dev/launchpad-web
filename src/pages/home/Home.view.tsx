@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { CurrentThemeType } from '@/providers/ThemeProvider/ThemeProvider'
 import { PostsList } from './components/PostsList/PostsList'
 import { ProjectList } from './components/Projectslist/ProjectsList'
+
 import * as S from './style'
 import { ProjectInfoHeader } from '../Project/components/ProjectInfoHeader/ProjectInfoHeader'
 
@@ -18,6 +19,7 @@ export const HomeView: FC<IHomeViewProps> = (props) => {
       <button onClick={() => updateTheme('light')}>light theme</button>
       <button onClick={() => updateTheme('dark')}>dark theme</button>
 
+
       <ProjectList search="" />
       <PostsList />
       <ProjectInfoHeader
@@ -26,6 +28,7 @@ export const HomeView: FC<IHomeViewProps> = (props) => {
         // network={project.network}
         title="asfsaf"
       />
+
     </main>
   )
 }
