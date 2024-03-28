@@ -9,6 +9,7 @@ export const lightTheme: DefaultTheme = {
     btn: `#2381CC`,
     btnText: `#FFFFFF`,
     bgSecondary: `#EFEFF3`,
+    success: '#62c56d',
     redAlert: '#f00',
   },
   gradient: {
@@ -26,6 +27,7 @@ export const darkTheme: DefaultTheme = {
     btn: `#2381CC`,
     btnText: `#FFFFFF`,
     bgSecondary: `#464646`,
+    success: '#62c56d',
     redAlert: '#f00',
   },
   gradient: {

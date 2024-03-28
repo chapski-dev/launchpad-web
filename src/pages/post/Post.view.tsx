@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { Container, Modal } from '@/ui'
 import * as S from './style'
+import { Container, Modal } from '../../ui'
 
 interface IPostViewProps {
   handleModal: () => void
