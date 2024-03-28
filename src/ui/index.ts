@@ -1,5 +1,4 @@
-import { Container, Header } from './layout'
-
+import { Container } from './Container'
 import { Modal } from './Modal'
 
-export { Modal, Container, Header }
+export { Modal, Container }

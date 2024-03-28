@@ -1,8 +1,12 @@
-import { FCWithChildren } from '@/types/app'
+import React, { FC } from 'react'
+
 import * as S from './style'
 
-export const Container: FCWithChildren = (props) => {
-  const { children } = props
-
-  return <S.Wrapper>{children}</S.Wrapper>
+type ContainerProps = {
+  children: React.ReactNode
+  className?: string
 }
+
+export const Container: FC<ContainerProps> = ({ children, className }) => (
+  <S.Container className={className}>{children}</S.Container>
+)
