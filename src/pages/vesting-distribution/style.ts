@@ -1,18 +1,22 @@
 import { styled } from 'styled-components'
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  padding-top: 20px;
 `
 
 export const TemporaryWrapper = styled.div`
-  width: 450px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `
 
 export const BalanceBlock = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  max-width: 450px;
   width: 100%;
   height: 125px;
   padding: 12px;
@@ -76,6 +80,8 @@ export const BalanceLocked = styled.span`
 `
 
 export const UnlockScheduleBlock = styled.div`
+  max-width: 450px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin-top: 8px;
@@ -104,19 +110,50 @@ export const DescrUnlock = styled.div`
 `
 
 export const ClaimedItemsWrapper = styled.div`
-  width: 100%;
-  background-color: ${({ theme }) => theme.color.bgSecondary};
-  padding: 12px;
-  margin: 12px 0 12px 0;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  max-width: 450px;
+  width: 100%;
+  height: 170px;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 10px;
+  background-color: transparent;
+  background-image: linear-gradient(to right, #f03f9f, #0092e0),
+    linear-gradient(to right, #f03f9f, #0092e0);
+  background-size: 100% 1.5px;
+  background-position: 0 100%, 0 0;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 24px;
+    border: 1.5px solid #f03f9f;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+  }
+
+  &:after {
+    border: 1.5px solid #0092e0;
+    border-left: none;
+    left: auto;
+    right: 0;
+    border-radius: 0 10px 10px 0;
+  }
 `
 
 export const ClaimedItemsWrapperInner = styled.div`
   width: 100%;
   height: 100%;
-  border: 3px solid ${({ theme }) => theme.color.bg};
+  /* border-top: 3px solid ${({ theme }) => theme.color.bgSecondary}; */
   border-radius: 10px;
 `
 

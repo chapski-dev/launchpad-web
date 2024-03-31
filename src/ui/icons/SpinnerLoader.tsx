@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { memo, SVGProps } from 'react';
+import * as React from 'react'
+import { memo, SVGProps } from 'react'
 
 const SvgSpinnerLoader = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -75,6 +75,6 @@ const SvgSpinnerLoader = (props: SVGProps<SVGSVGElement>) => (
       style={{ transformOrigin: '12px 12px' }}
     />
   </svg>
-);
-const Memo = memo(SvgSpinnerLoader);
-export default Memo;
+)
+const Memo = memo(SvgSpinnerLoader)
+export default Memo

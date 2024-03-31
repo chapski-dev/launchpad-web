@@ -1,12 +1,17 @@
 import { styled } from 'styled-components'
 
-export const WrapperContainer = styled.div`
-  width: 450px;
+export const Wrapper = styled.div`
+  position: relative;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 `
 
-export const Wrapper = styled.div`
+export const WrapperContainer = styled.div`
   width: 100%;
-  position: relative;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 `
 
 export const CompletingInfoBlock = styled.div`
@@ -31,5 +36,7 @@ export const TaskWrapper = styled.div`
   border-radius: 28px;
   background-color: ${({ theme }) => theme.color.bgSecondary};
   padding: 4px;
-  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `

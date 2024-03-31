@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { TnC } from '@ton-and-company/sdk'
 import dayjs from 'dayjs'
 import { toHumanNumber } from '@/utils/toHumanNumber'
-import mock from './assets/mock.svg'
+import { SvgMock } from '@ui/icons'
 import * as S from './style'
 
 type ProjectCardProps = {
@@ -67,7 +67,7 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
 
   return (
     <S.Wrapper onClick={handleProjectCardClick}>
-      <S.Image alt="project_image" src={image || mock} />
+      <S.Image alt="project_image" src={image} />
       <S.InfoWrapper>
         <S.Title>{title}</S.Title>
         <S.Description>{description}</S.Description>

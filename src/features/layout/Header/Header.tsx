@@ -4,25 +4,31 @@ import { Link } from 'react-router-dom'
 import { ConnectWalletModal } from '@/modals'
 import { AppRoutes } from '@/router'
 import * as S from './style'
+import { ProfileBlock } from '../ProfileBlock/ProfileBlock'
 
 export const Header = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   return (
     <>
       <S.Header>
+        <ProfileBlock />
         <S.Nav>
           {links.map((link) => (
             <Link
               key={link.name}
-              className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
+              style={{ textDecoration: 'none', color: 'inherit' }}
               to={link.href}
             >
-              <p className="hidden md:block">{link.name}</p>
+              {link.name}
             </Link>
           ))}
-          <button children="Connect Wallet" onClick={() => setOpen(true)} />
         </S.Nav>
+
+        <S.ConnectButton
+          children="Connect Wallet"
+          onClick={() => setOpen(true)}
+        />
       </S.Header>
       <ConnectWalletModal onClose={setOpen} open={open} />
     </>

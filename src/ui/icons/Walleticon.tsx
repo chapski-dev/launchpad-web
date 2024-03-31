@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { memo, SVGProps } from 'react';
+import * as React from 'react'
+import { memo, SVGProps } from 'react'
 
 const SvgWalleticon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -26,6 +26,6 @@ const SvgWalleticon = (props: SVGProps<SVGSVGElement>) => (
       </clipPath>
     </defs>
   </svg>
-);
-const Memo = memo(SvgWalleticon);
-export default Memo;
+)
+const Memo = memo(SvgWalleticon)
+export default Memo
