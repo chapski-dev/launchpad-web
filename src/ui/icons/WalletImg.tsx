@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { memo, SVGProps } from 'react';
+import * as React from 'react'
+import { memo, SVGProps } from 'react'
 
 const SvgWalletImg = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -22,6 +22,6 @@ const SvgWalletImg = (props: SVGProps<SVGSVGElement>) => (
       fill="CurrentColor"
     />
   </svg>
-);
-const Memo = memo(SvgWalletImg);
-export default Memo;
+)
+const Memo = memo(SvgWalletImg)
+export default Memo

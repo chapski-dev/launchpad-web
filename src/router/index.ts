@@ -2,7 +2,7 @@ export const AppRoutes = {
   home: '/',
   post: 'post',
   profile: 'profile',
-  project: 'project',
+  project: 'project/:id',
   referral: 'referral',
   'vesting-distribution': 'vesting-distribution',
-} as const;
+} as const

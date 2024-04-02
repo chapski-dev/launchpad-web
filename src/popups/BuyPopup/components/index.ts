@@ -1,0 +1,6 @@
+export { WaitingForApproval } from './WaitingForApproval'
+export { Loader } from './Loader/Loader'
+export { SuccessBuy } from './SuccessBuy/SuccessBuy'
+export { SwitchBtn } from './SwitchBtn/SwitchBtn'
+export { Buy } from './Buy/Buy'
+export { JoinWaitlist } from './JoinWaitlist/JoinWaitlist'
