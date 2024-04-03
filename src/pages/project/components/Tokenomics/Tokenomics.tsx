@@ -25,12 +25,19 @@ export const Tokenomics: FC<IDistributionManagmentProps> = (props) => {
     value: 'tokenomics',
   })
 
-  const totalSupply = useMemo(
-    () => tokenomics.reduce((acc, curr) => acc + Number(curr.amount), 0),
-    [tokenomics]
-  )
+  const totalSupply = useMemo(() => {
+    if (tokenomics) {
+      return tokenomics.reduce((acc, curr) => acc + Number(curr.amount), 0)
+    } else {
+      return 0
+    }
+  }, [tokenomics])
 
   const chartItems = useMemo(() => {
+    if (!tokenomics || !Array.isArray(tokenomics)) {
+      return []
+    }
+
     const tokenomicsChartItems = tokenomics.map((tokenomicItem, idx) => ({
       color: colors[idx],
       percent: Math.floor((Number(tokenomicItem.amount) / totalSupply) * 100),
@@ -40,6 +47,10 @@ export const Tokenomics: FC<IDistributionManagmentProps> = (props) => {
   }, [tokenomics, totalSupply])
 
   const stats = useMemo(() => {
+    if (!tokenomics || !Array.isArray(tokenomics) || tokenomics.length === 0) {
+      return []
+    }
+
     const tokenomicsStats = tokenomics.map((distribution, idx) => {
       return {
         label: distribution.name,

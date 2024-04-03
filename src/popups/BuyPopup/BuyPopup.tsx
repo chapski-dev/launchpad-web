@@ -3,17 +3,9 @@ import { useTonAddress, useTonConnectUI } from '@tonconnect/ui-react'
 import { useWeb3Modal } from '@web3modal/scaffold-react'
 import { SaleV1FunC, SaleV1Solidity, ERC20 } from '@xton/user-sdk'
 import { BrowserProvider, JsonRpcSigner } from 'ethers'
-
 import { useNavigate } from 'react-router-dom'
 import { Address, fromNano } from 'ton-core'
 import { Config, useAccount, useConnectorClient } from 'wagmi'
-import {
-  WaitingForApproval,
-  Buy,
-  Loader,
-  SuccessBuy,
-  JoinWaitlist,
-} from './components'
 import {
   // checkTransaction,
   estimateBuyAmount,
@@ -21,12 +13,20 @@ import {
   queryTONPrice,
   queryUserSaleState,
   queryWhitelist,
-} from '../../api'
+} from 'api'
+import { ProjectSaleState } from 'api/types'
+import { MainButton } from 'features/MainButton'
+import { useSendTransaction } from 'hooks/useSendTransaction/useSendTransaction'
+import { Modal } from 'ui/Modal/Modal'
+import {
+  WaitingForApproval,
+  Buy,
+  Loader,
+  SuccessBuy,
+  JoinWaitlist,
+} from './components'
+import * as S from './style'
 import { ApiRoutes } from '../../api/config'
-import { ProjectSaleState } from '../../api/types'
-import { MainButton } from '../../features/MainButton'
-import { useSendTransaction } from '../../hooks/useSendTransaction/useSendTransaction'
-import { Modal } from '../../ui/Modal/Modal'
 
 type BuyStatus = 'buy' | 'loader' | 'waiting' | 'success' | 'join_waitlist'
 
@@ -73,9 +73,11 @@ export const BuyPopup: FC<BuyPopupProps> = (props) => {
     useState(initialWaitingApprovalItems)
 
   const [buyFormState, setBuyFormState] = useState<BuyFormValues>({
-    ton: fromNano(projectSaleState.price),
+    ton: fromNano(projectSaleState?.price || 0),
     token: '1',
   })
+
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const [tonConnectUI] = useTonConnectUI()
 
@@ -98,6 +100,7 @@ export const BuyPopup: FC<BuyPopupProps> = (props) => {
   }, [])
 
   const currentBuyPopupState = useMemo(() => {
+    // console.log('currentStatus: ', currentStatus)
     switch (currentStatus) {
       case 'buy':
         return (
@@ -108,6 +111,8 @@ export const BuyPopup: FC<BuyPopupProps> = (props) => {
             projectSaleState={projectSaleState}
             setActiveChain={setActiveChain}
             updateBuyFormState={updateBuyFormState}
+            errorMessage={errorMessage}
+            setErrorMessage={setErrorMessage}
           />
         )
       case 'loader':
@@ -131,6 +136,8 @@ export const BuyPopup: FC<BuyPopupProps> = (props) => {
             projectSaleState={projectSaleState}
             setActiveChain={setActiveChain}
             updateBuyFormState={updateBuyFormState}
+            errorMessage={errorMessage}
+            setErrorMessage={setErrorMessage}
           />
         )
     }
@@ -142,11 +149,12 @@ export const BuyPopup: FC<BuyPopupProps> = (props) => {
     project,
     projectSaleState,
     updateBuyFormState,
+    errorMessage,
   ])
 
   const handleBuy = async () => {
     if (currentStatus === 'success') {
-      router(`${ApiRoutes.SaleState}/${projectId}`)
+      router(`${ApiRoutes.SaleState} ${projectId}`)
 
       return
     }
@@ -205,18 +213,18 @@ export const BuyPopup: FC<BuyPopupProps> = (props) => {
       //   Address.parse(tonUserWalletAddress)
       // )
 
-      console.log(whitelist)
-      console.log(project)
+      console.log('whitelist: ', whitelist)
+      // console.log('project: ', project)
 
       const tonPool = project.allocationPools
         .filter((pool: any) => pool.network === 'TON')
         .pop()
 
-      console.log(whitelist)
-      console.log(project)
+      // console.log('tonPool: ', tonPool)
 
       // Step 2
 
+      console.log('Number(buyFormState.ton): ', Number(buyFormState.ton))
       const createUserMessage = await SaleV1FunC.createUserMessageR(
         Address.parse(tonPool.contract),
         '0.25',
@@ -240,6 +248,8 @@ export const BuyPopup: FC<BuyPopupProps> = (props) => {
         case userSaleState.state === 'bought':
           createUserBoc = 'true'
       }
+
+      // console.log('createUserBoc: ', createUserBoc)
       // We don't need to deploy user contract if the state is already there
 
       // Step: 4
@@ -308,16 +318,14 @@ export const BuyPopup: FC<BuyPopupProps> = (props) => {
               project.saleId
             )
 
-            console.log('userContractAddress', userContractAddress)
-
             // Step 6.0
             const tonPrice = await queryTONPrice()
 
             const buyAmount = await estimateBuyAmount(
               project.saleId,
               'TON',
-              Number(buyFormState.ton),
-              BigInt(1e9)
+              Number(BigInt(1)),
+              BigInt(buyFormState.token.toString())
             )
 
             //Step 6
@@ -328,10 +336,14 @@ export const BuyPopup: FC<BuyPopupProps> = (props) => {
               tonPrice
             )
 
-            //Step 7
+            console.log('buyUserMessage: ', buyUserMessage)
+
+            // //Step 7
             const { boc: buyUserBoc } = await sendTransaction(buyUserMessage)
 
-            //Step 8
+            console.log('buyUserBoc: ', buyUserBoc)
+
+            // //Step 8
             if (buyUserBoc) {
               let currentAttempts = 0
               let isBuyUserTrxSigned = false
@@ -454,7 +466,7 @@ export const BuyPopup: FC<BuyPopupProps> = (props) => {
     alert('Eth click !')
   }
 
-  const currentMainBuutonText = useMemo(() => {
+  const currentMainButonText = useMemo(() => {
     switch (true) {
       case activeChain === 'TON' && !tonUserWalletAddress:
       case activeChain === 'ETH' && !ethUserWalletAddress:
@@ -490,11 +502,13 @@ export const BuyPopup: FC<BuyPopupProps> = (props) => {
     >
       {currentBuyPopupState}
       {currentStatus !== 'loader' && (
-        <MainButton
-          onClick={handleBuy}
-          progress={isLoading}
-          text={currentMainBuutonText}
-        />
+        // <MainButton
+        //   onClick={handleBuy}
+        //   progress={isLoading}
+        //   text={currentMainButonText}
+        //   disabled={!!errorMessage}
+        // />
+        <S.BuyButton onClick={handleBuy}>Buy</S.BuyButton>
       )}
     </Modal>
   )

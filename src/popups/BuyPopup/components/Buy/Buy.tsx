@@ -3,6 +3,7 @@ import {
   Dispatch,
   FC,
   SetStateAction,
+  useEffect,
   useMemo,
   useState,
 } from 'react'
@@ -10,14 +11,14 @@ import {
 import { useQuery } from '@tanstack/react-query'
 import { useTonAddress, useTonConnectUI } from '@tonconnect/ui-react'
 import { fromNano } from 'ton-core'
+import { ProjectSaleState } from 'api/types'
+import { BuyFormValues } from 'popups/BuyPopup/BuyPopup'
+import { getBalance } from 'utils/getBalance'
 import * as S from './style'
-import { ProjectSaleState } from '../../../../api/types'
-import { getBalance } from '../../../../utils/getBalance'
-import { BuyFormValues } from '../../BuyPopup'
 import { SwitchBtn } from '../SwitchBtn/SwitchBtn'
 
 const CHAIN_TABS: ['TON', 'ETH'] = ['TON', 'ETH']
-const MIN_TON = 1
+const MIN_TOKEN = 1
 
 type BuyProps = {
   setActiveChain: Dispatch<SetStateAction<'TON' | 'ETH'>>
@@ -26,6 +27,8 @@ type BuyProps = {
   projectSaleState: ProjectSaleState
   buyFormState: BuyFormValues
   updateBuyFormState: (formState: BuyFormValues) => void
+  errorMessage: string
+  setErrorMessage: Dispatch<SetStateAction<string>>
 }
 export const Buy: FC<BuyProps> = (props) => {
   const {
@@ -35,22 +38,60 @@ export const Buy: FC<BuyProps> = (props) => {
     projectSaleState,
     buyFormState,
     updateBuyFormState,
+    errorMessage,
+    setErrorMessage,
   } = props
 
-  const [tonStrValue, setTonStrValue] = useState('0.1')
-  const [tokenStrValue, setTokenStrValue] = useState('')
+  const [tonStrValue, setTonStrValue] = useState(buyFormState.ton)
+  const [tokenStrValue, setTokenStrValue] = useState(buyFormState.token)
 
   const handleSetTonStrValue = (e: ChangeEvent<HTMLInputElement>) => {
+    // TON
     const value = e.target.value
     const cleanedValue = cleanStringValue(value)
+
     setTonStrValue(cleanedValue)
+    handleSetValue('ton')(cleanedValue)
   }
 
   const handleSetTokenStrValue = (e: ChangeEvent<HTMLInputElement>) => {
+    // XTON
     const value = e.target.value
     const cleanedValue = cleanStringValue(value)
-    setTokenStrValue(cleanedValue)
+
+    if (/^$|^\d+(\.\d{0,3})?$/.test(cleanedValue)) {
+      setTokenStrValue(cleanedValue)
+      handleSetValue('xton')(cleanedValue)
+    }
   }
+
+  const handleBlur = () => {
+    if (tokenStrValue === '') {
+      setTokenStrValue(MIN_TOKEN.toString())
+      handleSetValue('xton')(MIN_TOKEN.toString())
+    }
+  }
+
+  useEffect(() => {
+    if (tonStrValue === '') {
+      setErrorMessage('TON value is empty.')
+    } else if (tokenStrValue === '') {
+      setErrorMessage(`${project.symbol} is empty.`)
+    } else if (+buyFormState.token > +fromNano(projectSaleState?.maxBuy || 0)) {
+      setErrorMessage(`Maximum ${project.symbol} reached.`)
+    } else if (+buyFormState.token < MIN_TOKEN) {
+      setErrorMessage(
+        `The minimum amount to buy ${project.symbol} is ${MIN_TOKEN}.`
+      )
+    } else if (
+      userBalance &&
+      userBalance < +buyFormState.token * currentTokenPrice
+    ) {
+      setErrorMessage('Not enough TON.')
+    } else {
+      setErrorMessage('')
+    }
+  }, [tonStrValue, tokenStrValue])
 
   const userWalletAddress = useTonAddress()
 
@@ -66,33 +107,39 @@ export const Buy: FC<BuyProps> = (props) => {
   })
 
   const currentTokenPrice = useMemo(
-    () => Number(fromNano(projectSaleState.price)),
-    [projectSaleState.price]
+    () => Number(fromNano(projectSaleState?.price || 0)),
+    [projectSaleState?.price]
   )
 
-  const handleSetValue =
-    (type: 'ton' | 'xton') => (e: ChangeEvent<HTMLInputElement>) => {
-      switch (type) {
-        case 'xton':
-          updateBuyFormState({
-            ton: (
-              Number((Number(tokenStrValue) * currentTokenPrice).toFixed(2)) +
-              0.1
-            ).toString(),
-            token: tokenStrValue,
-          })
-          break
+  const handleSetValue = (type: 'ton' | 'xton') => (newValue: string) => {
+    switch (type) {
+      case 'xton':
+        const ton = formatNumber(
+          Number((Number(newValue) * currentTokenPrice).toFixed(2)) + 0.1
+        )
 
-        case 'ton':
-          updateBuyFormState({
-            ton: (Number(tonStrValue) + 0.1).toString(),
-            token: Number(
-              (Number(tonStrValue) / currentTokenPrice).toFixed(2)
-            ).toString(),
-          })
-          break
-      }
+        updateBuyFormState({
+          ton,
+          token: formatNumber(+newValue, 3),
+        })
+        setTonStrValue(ton)
+        break
+
+      case 'ton':
+        const token = formatNumber(
+          +(Number(newValue) / currentTokenPrice).toFixed(2),
+          3
+        )
+
+        updateBuyFormState({
+          ton: formatNumber(Number(newValue) + 0.1),
+          token,
+        })
+
+        setTokenStrValue(token)
+        break
     }
+  }
 
   const handleSetMax = () => {
     if (!userBalance) {
@@ -135,37 +182,36 @@ export const Buy: FC<BuyProps> = (props) => {
         </S.Balance>
       </S.AmountBlock>
 
-      <S.RecountBlock>
-        <S.Input
-          actionElement={<S.Chain children={project.symbol} />}
-          className="ton-input"
-          onBlur={handleSetValue('xton')}
-          onChange={handleSetTokenStrValue}
-          type="number"
-          value={tokenStrValue}
-        />
-        {+buyFormState.token > +fromNano(projectSaleState.maxBuy) && (
-          <span style={{ color: 'red' }}>превышена макс сумма</span>
-        )}
-        <S.Input
-          actionElement={<S.Chain children="TON" />}
-          onBlur={handleSetValue('ton')}
-          onChange={handleSetTonStrValue}
-          type="text"
-          value={tonStrValue}
-        />
-        {+buyFormState.ton >
-          +fromNano(projectSaleState.maxBuy) *
-            +fromNano(projectSaleState.price) && (
-          <span style={{ color: 'red' }}>превышена макс сумма</span>
-        )}
-        <S.Triangle />
-      </S.RecountBlock>
+      <div>
+        <S.RecountBlock>
+          <S.Input
+            actionElement={<S.Chain children={project.symbol} />}
+            className="ton-input"
+            onBlur={handleBlur}
+            onChange={handleSetTokenStrValue}
+            type="number"
+            value={tokenStrValue}
+          />
+
+          <S.InputWrapper>
+            <S.Input
+              actionElement={<S.Chain children="TON" />}
+              onBlur={handleBlur}
+              onChange={handleSetTonStrValue}
+              type="text"
+              value={tonStrValue}
+              defaultValue={buyFormState.ton}
+            />
+            <S.Triangle />
+          </S.InputWrapper>
+        </S.RecountBlock>
+        {errorMessage && <span style={{ color: 'red' }}>{errorMessage}</span>}
+      </div>
 
       <S.WellBlock>
         <S.WellItem
           children={`1 ${project.symbol} = ${fromNano(
-            projectSaleState.price
+            projectSaleState?.price || 0
           )} TON`}
         />
         <S.WellItem
@@ -177,8 +223,8 @@ export const Buy: FC<BuyProps> = (props) => {
 
       <S.MinMaxBlock>
         <S.MinMaxItem
-          children={`Min ${MIN_TON} ${project.symbol}, Max ${fromNano(
-            projectSaleState.maxBuy
+          children={`Min ${MIN_TOKEN} ${project.symbol}, Max ${fromNano(
+            projectSaleState?.maxBuy || 0
           )} ${project.symbol}`}
         />
       </S.MinMaxBlock>
@@ -245,4 +291,9 @@ export const cleanStringValue = (str: string): string => {
   // cleanedStr = cleanedStr.replace(/\B(?=(\d{3})+(?!\d))/g, '');
 
   return cleanedStr // пример возвращаемого числа 1900000.
+}
+
+export const formatNumber = (number: number, decimalPlace = 6): string => {
+  let formattedNumber = number.toFixed(decimalPlace).replace(/\.?0+$/, '') // Round to 6 decimal places and remove trailing zeros
+  return formattedNumber === '0' ? '0' : formattedNumber // Check if the number is zero, return '0' if true
 }

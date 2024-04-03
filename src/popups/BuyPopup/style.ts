@@ -1,4 +1,6 @@
 import { styled } from 'styled-components'
+import { MainButton } from 'features/MainButton'
+import { Button } from 'ui/Button/Button'
 import { Input as UIInput } from '../../ui/Input/Input'
 
 export const Wrapper = styled.div`
@@ -107,4 +109,12 @@ export const TotalCost = styled.span`
   font-size: 14px;
   color: ${({ theme }) => theme.color.hint};
   padding-bottom: 10px;
+`
+
+export const BuyButton = styled(Button)`
+  width: 95%;
+  height: 44px;
+  margin-left: 10px;
+  margin-top: 5px;
+  cursor: pointer;
 `

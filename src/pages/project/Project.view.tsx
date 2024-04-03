@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useTonAddress, useTonConnectModal } from '@tonconnect/ui-react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -20,6 +20,8 @@ interface IProjectViewProps {
 
 export const ProjectView: FC<IProjectViewProps> = ({ first, setFirst }) => {
   const navigate = useNavigate()
+
+  const [open, setOpen] = useState(false)
 
   const { id } = useParams()
 
@@ -49,24 +51,28 @@ export const ProjectView: FC<IProjectViewProps> = ({ first, setFirst }) => {
     enabled: !!project?.saleId,
   })
 
+  const ToggleBuyPopUp = () => setOpen((prev) => !prev)
+
   return (
     <S.Wrapper>
       <Container>
         {project && (
-          <>
+          <S.BuyWrapper>
             <BuyPopup
-              onClose={() => {}}
-              open={false}
+              onClose={ToggleBuyPopUp}
+              open={open}
               project={project}
               projectId={project.saleId}
               projectSaleState={projectSaleState!}
             />
+
             <ProjectInfoHeader
               description="Some test description for wrapperd eth"
               image=""
               title="Xton Platform"
             />
-          </>
+            <S.BuyButton children="Buy" onClick={() => setOpen(true)} />
+          </S.BuyWrapper>
         )}
 
         <Tokenomics tokenomics={project?.tokenomics!} />
