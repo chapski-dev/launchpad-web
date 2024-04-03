@@ -10,6 +10,9 @@ export const ApiRoutes = {
   LaunchpadProjects: '/launchpad/projects',
   UserProfile: '/user/profile',
   GetBlogPosts: '/api/blog/getPosts',
+  ProjectSaleState: '/sale/state',
+  SaleState: '/sale-state',
+  Sale: '/sale',
 } as const
 
 export default Axios

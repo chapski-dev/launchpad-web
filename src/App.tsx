@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import { ThemeProvider } from '@/providers/ThemeProvider'
+import { ThemeProvider } from 'providers/ThemeProvider'
 import { GlobalStyle } from './assets/style/GlobalStyle'
 import { Layout } from './features/layout/Layout'
 import {

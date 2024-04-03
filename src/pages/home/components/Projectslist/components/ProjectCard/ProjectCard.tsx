@@ -1,10 +1,6 @@
-// import { AppRoutes } from 'constants/app'
-import { FC, useMemo } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { TnC } from '@ton-and-company/sdk'
-import dayjs from 'dayjs'
-import { toHumanNumber } from '@/utils/toHumanNumber'
-import mock from './assets/mock.svg'
+import { FC } from 'react'
+import { generatePath, useNavigate } from 'react-router-dom'
+import { AppRoutes } from 'router'
 import * as S from './style'
 
 type ProjectCardProps = {
@@ -18,19 +14,12 @@ type ProjectCardProps = {
 export const ProjectCard: FC<ProjectCardProps> = (props) => {
   const { image, title, description, id, icoMasterAddress } = props
 
+  const navigate = useNavigate()
+
   // const { data: icoInfo } = useQuery({
   //   queryKey: ['icoInfo', icoMasterAddress],
   //   queryFn: () => TnC.icoInfo(icoMasterAddress),
   // })
-
-  const handleProjectCardClick = () => {
-    // router.push({
-    //   pathname: AppRoutes.Project,
-    //   query: {
-    //     id,
-    //   },
-    // })
-  }
 
   // const currentSaleProgressLabel = useMemo(() => {
   //   if (!icoInfo) {
@@ -66,8 +55,10 @@ export const ProjectCard: FC<ProjectCardProps> = (props) => {
   // }, [icoInfo])
 
   return (
-    <S.Wrapper onClick={handleProjectCardClick}>
-      <S.Image alt="project_image" src={image || mock} />
+    <S.Wrapper
+      onClick={() => navigate(generatePath(AppRoutes.project, { id: id }))}
+    >
+      <S.Image alt="project_image" src={image} />
       <S.InfoWrapper>
         <S.Title>{title}</S.Title>
         <S.Description>{description}</S.Description>

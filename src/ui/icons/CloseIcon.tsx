@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { memo, SVGProps } from 'react';
+import { memo, SVGProps } from 'react'
 
 const SvgCloseIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -18,6 +17,6 @@ const SvgCloseIcon = (props: SVGProps<SVGSVGElement>) => (
       strokeWidth={1.4}
     />
   </svg>
-);
-const Memo = memo(SvgCloseIcon);
-export default Memo;
+)
+const Memo = memo(SvgCloseIcon)
+export default Memo

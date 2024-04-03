@@ -15,7 +15,7 @@ export const TitleBlock = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.color.bg};
 
   svg {
-    color: white;
+    color: ${({ theme }) => theme.color.text};
   }
 `
 
@@ -45,7 +45,7 @@ export const WalletAddress = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.color.bg};
+  background-color: ${({ theme }) => theme.color.bgSecondary};
   color: ${({ theme }) => theme.color.text};
   padding: 6px 8px;
   font-weight: 600;
@@ -58,6 +58,7 @@ export const WalletAddress = styled.div`
 
   svg {
     width: 30px;
+    color: ${({ theme }) => theme.color.text};
   }
 `
 

@@ -6,9 +6,6 @@ import * as S from './style'
 export const Layout = () => (
   <S.Wrapper>
     <Header />
-    <S.ProfileBlockWrapper>
-      <ProfileBlock />
-    </S.ProfileBlockWrapper>
     <div id="detail">
       <Outlet />
     </div>

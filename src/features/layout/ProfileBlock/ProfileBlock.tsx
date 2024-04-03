@@ -2,7 +2,7 @@ import { FC } from 'react'
 // import { useProfileContext } from 'hooks/useProfileContext/useProfileContext'
 // import { useTelegram } from 'hooks/useTelegram/useTelegram'
 // import { SvgRequired, SvgVerified } from 'ui/icons'
-import { SvgVerified } from '@/ui/icons'
+import { SvgVerified } from 'ui/icons'
 import * as S from './style'
 
 export const ProfileBlock: FC = () => {

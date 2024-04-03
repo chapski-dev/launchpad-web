@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import ContentLoader from 'react-content-loader'
 import { useTheme } from 'styled-components'
-import { FCWithChildren } from '@/types/app'
+import { FCWithChildren } from 'types/app'
 import * as S from './style'
 
 type LoaderProps = {

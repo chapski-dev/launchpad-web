@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 10px;
   padding: 12px 0;
-  border-bottom: 1px solid ${({ theme }) => theme.color.hint};
+  /* border-bottom: 1px solid ${({ theme }) => theme.color.hint}; */
   margin-bottom: 12px;
 `
 

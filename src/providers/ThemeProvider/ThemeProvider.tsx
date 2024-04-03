@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo, useState } from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
-import { darkTheme, lightTheme } from '@/assets/style/theme'
-import { FCWithChildren } from '@/types/app'
+import { darkTheme, lightTheme } from 'assets/style/theme'
+import { FCWithChildren } from 'types/app'
 
 export type CurrentThemeType = 'light' | 'dark'
 

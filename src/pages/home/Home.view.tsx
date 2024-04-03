@@ -1,10 +1,8 @@
 import { FC } from 'react'
-import { CurrentThemeType } from '@/providers/ThemeProvider/ThemeProvider'
+import { CurrentThemeType } from 'providers/ThemeProvider/ThemeProvider'
 import { PostsList } from './components/PostsList/PostsList'
 import { ProjectList } from './components/Projectslist/ProjectsList'
-
 import * as S from './style'
-import { ProjectInfoHeader } from '../Project/components/ProjectInfoHeader/ProjectInfoHeader'
 
 interface IHomeViewProps {
   updateTheme: (theme: CurrentThemeType) => void
@@ -15,20 +13,10 @@ export const HomeView: FC<IHomeViewProps> = (props) => {
 
   return (
     <main>
-      <S.Text>Text</S.Text>
-      <button onClick={() => updateTheme('light')}>light theme</button>
-      <button onClick={() => updateTheme('dark')}>dark theme</button>
-
-
+      {/* <button onClick={() => updateTheme('light')}>light theme</button>
+      <button onClick={() => updateTheme('dark')}>dark theme</button> */}
       <ProjectList search="" />
       <PostsList />
-      <ProjectInfoHeader
-        description="fasfas"
-        image="asfasf"
-        // network={project.network}
-        title="asfsaf"
-      />
-
     </main>
   )
 }

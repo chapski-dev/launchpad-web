@@ -1,14 +1,25 @@
-import { styled } from 'styled-components';
+import { styled } from 'styled-components'
 
 export const Header = styled.header`
   padding: 15px;
   width: 100%;
-`;
-
-export const Nav = styled.nav`
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 15px;
-  color: aqua;
-  text-decoration: underline;
-`;
+`
+
+export const Wrapper = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  align-items: center;
+`
+
+export const ConnectButton = styled.button`
+  background: ${({ theme }) => theme.color.btn};
+  color: ${({ theme }) => theme.color.btnText};
+  border: none;
+  padding: 15px 12px;
+  border-radius: 15px;
+  font-size: 14px;
+`

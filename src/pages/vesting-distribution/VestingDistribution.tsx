@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { Container } from '@/ui'
 import * as S from './style'
 import {
   SvgLinkClaimedItem,
@@ -17,28 +16,26 @@ const VestingDistribution: FC = () => {
       <main>
         <S.Wrapper>
           <S.TemporaryWrapper>
-            <Container>
-              <S.BalanceBlock>
-                <S.TitleBalance>Balance</S.TitleBalance>
-                <S.Balance>XTON</S.Balance>
+            <S.BalanceBlock>
+              <S.TitleBalance>Balance</S.TitleBalance>
+              <S.Balance>XTON</S.Balance>
 
-                <S.BalanceLocked>
-                  <SvgLockmini /> Locked Balance: XTON
-                </S.BalanceLocked>
-              </S.BalanceBlock>
-              <S.UnlockScheduleBlock>
-                <S.TitleUnlock>
-                  <SvgWarningCircle />
-                  Unlock schedule
-                </S.TitleUnlock>
-                <S.DescrUnlock>
-                  Vesting schedule lasts for days, starting from
-                  <br />
-                  <span>'YYYY-MM-DD' 'YYYY-MM-DD'</span>
-                  <span>ending on .</span>
-                </S.DescrUnlock>
-              </S.UnlockScheduleBlock>
-            </Container>
+              <S.BalanceLocked>
+                <SvgLockmini /> Locked Balance: XTON
+              </S.BalanceLocked>
+            </S.BalanceBlock>
+            <S.UnlockScheduleBlock>
+              <S.TitleUnlock>
+                <SvgWarningCircle />
+                Unlock schedule
+              </S.TitleUnlock>
+              <S.DescrUnlock>
+                Vesting schedule lasts for days, starting from
+                <br />
+                <span>'YYYY-MM-DD' 'YYYY-MM-DD'</span>
+                <span>ending on .</span>
+              </S.DescrUnlock>
+            </S.UnlockScheduleBlock>
 
             <S.ClaimedItemsWrapper>
               <S.ClaimedItemsWrapperInner>

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useQuery } from '@tanstack/react-query'
 // import { getICOJettons } from 'api';
-import { getICOJettons } from '@/api'
+import { getICOJettons } from 'api'
 import { ProjectCard } from './components'
 import * as S from './style'
 

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { useThemeContext } from '@/providers/ThemeProvider/ThemeProvider'
+import { useThemeContext } from 'providers/ThemeProvider/ThemeProvider'
 import { HomeView } from './Home.view'
 
 interface IHomeProps {}

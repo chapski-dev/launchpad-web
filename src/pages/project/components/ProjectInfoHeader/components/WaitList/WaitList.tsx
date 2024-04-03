@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { SvgSpinnerLoader, SvgWalletImg } from '@/ui/icons'
+import { SvgSpinnerLoader, SvgWalletImg } from 'ui/icons'
 import * as S from './style'
 
 type WaitListProps = {

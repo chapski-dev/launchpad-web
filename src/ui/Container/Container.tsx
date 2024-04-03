@@ -8,5 +8,5 @@ type ContainerProps = {
 }
 
 export const Container: FC<ContainerProps> = ({ children, className }) => (
-  <S.Container className={className}>{children}</S.Container>
+  <S.Wrapper className={className}>{children}</S.Wrapper>
 )

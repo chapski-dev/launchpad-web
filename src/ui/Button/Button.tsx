@@ -1,4 +1,4 @@
-import { FCWithChildren } from '@/types/app'
+import { FCWithChildren } from 'types/app'
 import * as S from './style'
 
 type ButtonProps = {

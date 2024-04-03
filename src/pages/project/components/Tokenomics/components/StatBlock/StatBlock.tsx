@@ -1,5 +1,5 @@
 import { FC, Fragment } from 'react'
-import { Line } from '@/ui/Line/Line'
+import { Line } from 'ui/Line/Line'
 import * as S from './style'
 
 type StatBlockProps = {

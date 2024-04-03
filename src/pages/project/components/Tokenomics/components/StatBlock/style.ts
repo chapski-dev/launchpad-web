@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Button as UIButton } from '@/ui/Button/Button'
+import { Button as UIButton } from 'ui/Button/Button'
 
 export const Wrapper = styled.div`
   display: flex;

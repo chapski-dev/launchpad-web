@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { launchpadWebAppUrl } from '@/constants/api'
+import { launchpadWebAppUrl } from 'constants/api'
 import * as S from './style'
 
 type PostCardProps = {
