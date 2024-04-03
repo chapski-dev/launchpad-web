@@ -15,14 +15,15 @@ import {
 } from './types'
 
 export const getICOJettons = (params?: { q: string }) =>
-  axios
-    .get<GetICOJettonsRes[]>(ApiRoutes.LaunchpadProjects, { params })
-    .then((res) => res.data)
+  AXIOS_XAPI_LAUNCHPAD_INSTANCE.get<GetICOJettonsRes[]>(
+    ApiRoutes.LaunchpadProjects,
+    { params }
+  ).then((res) => res.data)
 
 export const getICOProjectById = (id: string) =>
-  axios
-    .get<GetICOProjectByIdRes>(`${ApiRoutes.LaunchpadProjects}/${id}`)
-    .then((res) => res.data)
+  AXIOS_XAPI_LAUNCHPAD_INSTANCE.get<GetICOProjectByIdRes>(
+    `${ApiRoutes.LaunchpadProjects}/${id}`
+  ).then((res) => res.data)
 
 export const getXapiProfile = (params: {
   flag: 'pending-kyc' | 'new' | 'done' | 'done2'

@@ -17,9 +17,11 @@ export const ProjectList: FC<ProjectListProps> = (props) => {
     isLoading: isProjectsLoading,
     isSuccess: isProjectsLoaded,
   } = useQuery({
-    queryKey: ['icoProjects', search],
-    queryFn: () => getICOJettons({ q: search }),
+    queryKey: ['icoProjectss', search],
+    queryFn: () => getICOJettons(),
   })
+
+  console.log(projects)
 
   if (isProjectsLoading) {
     return <S.Loader type="projectCard" />

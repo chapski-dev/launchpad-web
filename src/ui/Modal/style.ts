@@ -1,6 +1,6 @@
-import { styled } from 'styled-components';
+import { styled } from 'styled-components'
 
-import { SvgClose } from '../icons';
+import { SvgClose } from '../icons'
 
 export const Overlay = styled.div`
   background: #000000;
@@ -13,19 +13,21 @@ export const Overlay = styled.div`
   position: fixed;
   transition: opacity 0.3s linear;
   opacity: 0;
+
   &.open {
     opacity: 0.5;
   }
-`;
+`
 
 export const Modal = styled.div`
   width: 400px;
   border-radius: 16px 16px 0px 0px;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.color.bg};
   border-radius: 10px;
   gap: 10px;
+  border: 1px solid ${({ theme }) => theme.color.bgSecondary};
 
   position: fixed;
   box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.15);
@@ -41,7 +43,7 @@ export const Modal = styled.div`
     transition: all 0.1s ease-out;
     -webkit-transition: all 0.1s ease-out;
   }
-`;
+`
 
 export const Header = styled.div`
   padding: 16px;
@@ -49,17 +51,17 @@ export const Header = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-`;
+`
 
 export const Title = styled.h4`
-  color: #000;
+  color: ${({ theme }) => theme.color.text};
   margin: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 1.6;
   letter-spacing: 0.0075em;
-`;
+`
 
 export const Close = styled(SvgClose)`
   position: absolute;
@@ -71,7 +73,7 @@ export const Close = styled(SvgClose)`
   path {
     fill: #000;
   }
-`;
+`
 
 export const Content = styled.div`
   overflow-y: scroll;
@@ -81,4 +83,4 @@ export const Content = styled.div`
   font-size: 1rem;
   line-height: 1.5;
   letter-spacing: 0.00938em;
-`;
+`

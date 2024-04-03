@@ -1,9 +1,23 @@
-import { FC } from 'react'
+import { FC, useCallback, useState } from 'react'
+import { useTonAddress } from '@tonconnect/ui-react'
+import { ConnectWalletModal } from 'modals'
 import { Container } from 'ui'
 import { Task } from 'ui/Task/Task'
 import * as S from './style'
 
 export const Profile: FC = () => {
+  const [isConnectWalletPopupOpen, setIsConnectWalletPopupOpen] =
+    useState<boolean>(false)
+
+  const tonUserWalletAddress = useTonAddress()
+
+  const toggleConnectWalletPopup = useCallback(() => {
+    // if (Boolean(tonUserWalletAddress)) {
+    // }
+
+    setIsConnectWalletPopupOpen((prev) => !prev)
+  }, [])
+
   // const { xapiProfileInfo, setXapiProfileFlag } = useProfileContext()
 
   //   const loadBlockpassWidget = useCallback(() => {
@@ -47,21 +61,18 @@ export const Profile: FC = () => {
               {/** этот айди является обязательным тк либа тригерится на onClick по нему, удалять нелья!  */}
               <Task
                 description="Description"
-                status="not-started"
+                done={Boolean(tonUserWalletAddress)}
+                onClick={toggleConnectWalletPopup}
+                status={Boolean(tonUserWalletAddress) ? 'done' : 'not-started'}
                 title="Connect Wallet"
                 type="wallet"
               />
               <Task
-                description="Description"
-                status="pending"
-                title="Connect Wallet"
-                type="wallet"
-              />
-              <Task
-                description="Description"
-                status="done"
-                title="Connect Wallet"
-                type="wallet"
+                description={'KYC to verify your account'}
+                disabled
+                status={'not-started'}
+                title={'Pass KYC'}
+                type="kyc"
               />
             </div>
             {/* {xapiProfileInfo?.social?.map((el) => (
@@ -76,6 +87,10 @@ export const Profile: FC = () => {
           </S.TaskWrapper>
         </Container>
       </S.WrapperContainer>
+      <ConnectWalletModal
+        onClose={toggleConnectWalletPopup}
+        open={isConnectWalletPopupOpen}
+      />
     </S.Wrapper>
   )
 }
