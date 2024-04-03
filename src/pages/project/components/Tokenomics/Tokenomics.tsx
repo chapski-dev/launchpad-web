@@ -1,6 +1,6 @@
 import { FC, useMemo, useState } from 'react'
-import { Tabs } from '@/ui/Tabs/Tabs'
-import { Tokenomic } from '@api/types'
+import { Tokenomic } from 'api/types'
+import { Tabs } from 'ui/Tabs/Tabs'
 import { ChartBlock, StatBlock } from './components'
 import * as S from './style'
 

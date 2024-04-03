@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { CurrentThemeType } from '@/providers/ThemeProvider/ThemeProvider'
+import { CurrentThemeType } from 'providers/ThemeProvider/ThemeProvider'
 import { PostsList } from './components/PostsList/PostsList'
 import { ProjectList } from './components/Projectslist/ProjectsList'
 import * as S from './style'

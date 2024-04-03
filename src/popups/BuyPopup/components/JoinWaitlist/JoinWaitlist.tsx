@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { SvgToncoinIcon, SvgWalletImg } from '@/ui/icons'
+import { SvgToncoinIcon, SvgWalletImg } from 'ui/icons'
 import * as S from './style'
 import { SwitchBtn } from '../SwitchBtn/SwitchBtn'
 

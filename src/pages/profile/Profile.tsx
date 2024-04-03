@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { Container } from '@/ui'
-import { Task } from '@/ui/Task/Task'
+import { Container } from 'ui'
+import { Task } from 'ui/Task/Task'
 import * as S from './style'
 
 export const Profile: FC = () => {

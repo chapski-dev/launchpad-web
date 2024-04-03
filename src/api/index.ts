@@ -1,9 +1,9 @@
 import { retrieveLaunchParams } from '@tma.js/sdk'
+
 import {
   AXIOS_LAUNCHPAD_INSTANCE,
   AXIOS_XAPI_LAUNCHPAD_INSTANCE,
-} from '@/utils/axios-instance/axios-instance'
-
+} from 'utils/axios-instance/axios-instance'
 import axios, { ApiRoutes } from './config'
 import {
   GetICOJettonsRes,

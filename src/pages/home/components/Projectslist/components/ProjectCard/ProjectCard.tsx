@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { generatePath, useNavigate } from 'react-router-dom'
-import { AppRoutes } from '@/router'
+import { AppRoutes } from 'router'
 import * as S from './style'
 
 type ProjectCardProps = {

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import {
   SvgCheck as UISvgCheck,
   SvgHourglass as UISvgHourglass,
-} from '@/ui/icons'
+} from 'ui/icons'
 import Oval from '../../../../ui/LoaderSpiner/LoaderSpiner'
 
 export const Header = styled.div`

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { SvgSuccessBig } from '@/ui/icons'
+import { SvgSuccessBig } from 'ui/icons'
 import * as S from './style'
 
 type SuccessBuyProps = {

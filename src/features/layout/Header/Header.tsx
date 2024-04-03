@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ConnectWalletModal } from '@/modals'
-import { AppRoutes } from '@/router'
+import { ConnectWalletModal } from 'modals'
+import { AppRoutes } from 'router'
 import * as S from './style'
 import { ProfileBlock } from '../ProfileBlock/ProfileBlock'
 

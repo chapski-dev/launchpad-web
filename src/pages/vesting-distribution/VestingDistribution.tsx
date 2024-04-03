@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { Container } from '@/ui'
 import * as S from './style'
 import {
   SvgLinkClaimedItem,

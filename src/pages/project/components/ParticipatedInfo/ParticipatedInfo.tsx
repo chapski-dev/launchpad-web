@@ -1,10 +1,10 @@
 import { FC, useMemo } from 'react'
 import { ParticipantFullInfo } from '@ton-and-company/sdk/dist/core/sdk'
-import dayjs from 'dayjs'
 
-import { Container } from '@ui'
-import { SvgLockFlat } from '@ui/icons'
-import { toHumanNumber } from '@utils/toHumanNumber'
+import dayjs from 'dayjs'
+import { Container } from 'ui'
+import { SvgLockFlat } from 'ui/icons'
+import { toHumanNumber } from 'utils/toHumanNumber'
 import {
   TransactionBlock,
   LockTransactionBlock,

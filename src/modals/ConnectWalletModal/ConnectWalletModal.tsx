@@ -2,9 +2,9 @@ import { FC, ReactElement, useMemo } from 'react'
 import { useTonAddress, useTonConnectUI } from '@tonconnect/ui-react'
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 import { useAccount } from 'wagmi'
-import { Modal } from '@/ui'
-import { SvgRightArrow, SvgToncoinIcon, SvgWalleticon } from '@/ui/icons'
-import { shortenAddress } from '@/utils'
+import { Modal } from 'ui'
+import { SvgRightArrow, SvgToncoinIcon, SvgWalleticon } from 'ui/icons'
+import { shortenAddress } from 'utils'
 import * as S from './style'
 
 type ConnectWalletModalProps = {

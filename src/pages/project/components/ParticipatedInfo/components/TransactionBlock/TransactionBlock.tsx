@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { SvgSuccessTrx, SvgTrxLink } from '@ui/icons'
+import { SvgSuccessTrx, SvgTrxLink } from 'ui/icons'
 import * as S from './style'
 import { Link } from '../../style'
 

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useTonAddress, useTonConnectModal } from '@tonconnect/ui-react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Container } from '@/ui'
+import { Container } from 'ui'
 import { ProjectInfoHeader } from './components/ProjectInfoHeader/ProjectInfoHeader'
 import { Tokenomics } from './components/Tokenomics/Tokenomics'
 import * as S from './style'
@@ -62,9 +62,9 @@ export const ProjectView: FC<IProjectViewProps> = ({ first, setFirst }) => {
               projectSaleState={projectSaleState!}
             />
             <ProjectInfoHeader
+              description="Some test description for wrapperd eth"
               image=""
               title="Xton Platform"
-              description="Some test description for wrapperd eth"
             />
           </>
         )}

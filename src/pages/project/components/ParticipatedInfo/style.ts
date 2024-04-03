@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { SvgTrxArrow } from '@/ui/icons'
+import { SvgTrxArrow } from 'ui/icons'
 
 export const Wrapper = styled.div`
   display: flex;

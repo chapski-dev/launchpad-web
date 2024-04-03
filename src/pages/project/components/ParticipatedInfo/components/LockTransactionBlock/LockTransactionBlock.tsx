@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { SvgUnlock, SvgLock, SvgTrxLink } from '@ui/icons'
+import { SvgUnlock, SvgLock, SvgTrxLink } from 'ui/icons'
 import * as S from './style'
 import { Link } from '../../style'
 

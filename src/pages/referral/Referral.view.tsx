@@ -1,12 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC } from 'react'
 
-import { Container } from '@/ui';
-import * as S from './style';
-
+import { Container } from 'ui'
+import * as S from './style'
 
 interface IReferralViewProps {
-  first: string;
-  setFirst: React.Dispatch<React.SetStateAction<string>>;
+  first: string
+  setFirst: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const ReferralView: FC<IReferralViewProps> = ({ first, setFirst }) => (
@@ -19,5 +18,4 @@ export const ReferralView: FC<IReferralViewProps> = ({ first, setFirst }) => (
     />
     <p>{first}</p>
   </Container>
-);
-
+)
